@@ -11,6 +11,8 @@
 #define IN4 10
 #define EN34 11
 
+#define VELOCIDAD_SETEADA 255
+
 void setup() {
   Serial.begin(9600);
   pinMode(IN1, OUTPUT);
@@ -39,19 +41,19 @@ void loop() {
   Serial.print(distancia);
   Serial.println(" cm");
 
-  if (distancia>=50 && distancia<=300){// 2cm - 400cm
+  if (distancia>=50 && distancia<=300) {
 
-    acelerar(255);
+    acelerar(VELOCIDAD_SETEADA);
   }
 
-  else if (distancia>=10 && distancia<50){  //mapeo
+  else if (distancia>=10 && distancia<50) {  //mapeo
 
-    int dist = map(distancia, 10, 50, 70, 255);
+    int dist = map(distancia, 10, 50, 70, VELOCIDAD_SETEADA);
 
     acelerar(dist);
   } 
 
-  else if (distancia<10 && distancia>1){
+  else if (distancia<10 && distancia>1) {
     frenar();
   }
   
